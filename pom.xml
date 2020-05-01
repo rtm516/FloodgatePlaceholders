@@ -6,7 +6,7 @@
 
     <groupId>com.rtm516</groupId>
     <artifactId>FloodgatePlaceholders</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <name>FloodgatePlaceholders</name>
 
     <developers>
@@ -104,6 +104,18 @@
             <artifactId>lombok</artifactId>
             <version>1.18.12</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.8</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>2.9.8</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
