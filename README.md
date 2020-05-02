@@ -3,7 +3,7 @@
 
 [![HitCount](https://hits.dwyl.com/rtm516/FloodgatePlaceholders.svg)](http://hits.dwyl.com/rtm516/FloodgatePlaceholders)
 
-PlaceholderAPI support for [Floodgate](https://github.com/GeyserMC/Floodgate/pull/25/files)
+PlaceholderAPI support for [Floodgate](https://github.com/GeyserMC/Floodgate)
 
 ## Preview:
 Bedrock:
