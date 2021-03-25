@@ -41,8 +41,8 @@ public class Config {
         @JsonProperty("unknown")
         private String unknown;
 
-        @JsonProperty("android")
-        private String android;
+        @JsonProperty("google")
+        private String google;
 
         @JsonProperty("ios")
         private String iOS;
@@ -50,8 +50,8 @@ public class Config {
         @JsonProperty("osx")
         private String OSX;
 
-        @JsonProperty("fireos")
-        private String fireos;
+        @JsonProperty("amazon")
+        private String amazon;
 
         @JsonProperty("gearvr")
         private String gearVR;
@@ -59,8 +59,8 @@ public class Config {
         @JsonProperty("hololens")
         private String hololens;
 
-        @JsonProperty("win10")
-        private String win10;
+        @JsonProperty("uwp")
+        private String uwp;
 
         @JsonProperty("win32")
         private String win32;
@@ -68,17 +68,14 @@ public class Config {
         @JsonProperty("dedicated")
         private String dedicated;
 
-        @JsonProperty("orbis")
-        private String orbis;
+        @JsonProperty("ps4")
+        private String ps4;
 
         @JsonProperty("nx")
         private String NX;
 
-        @JsonProperty("switch")
-        private String nintendoSwitch;
-
-        @JsonProperty("xboxOne")
-        private String xboxOne;
+        @JsonProperty("xbox")
+        private String xbox;
     }
 
     @Getter

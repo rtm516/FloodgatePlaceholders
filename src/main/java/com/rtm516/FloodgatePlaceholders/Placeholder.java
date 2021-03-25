@@ -2,8 +2,8 @@ package com.rtm516.FloodgatePlaceholders;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
-import org.geysermc.floodgate.FloodgateAPI;
-import org.geysermc.floodgate.FloodgatePlayer;
+import org.geysermc.floodgate.api.FloodgateApi;
+import org.geysermc.floodgate.api.player.FloodgatePlayer;
 
 public class Placeholder extends PlaceholderExpansion {
 
@@ -44,14 +44,15 @@ public class Placeholder extends PlaceholderExpansion {
             return "";
         }
 
+        FloodgatePlayer floodgatePlayer = FloodgateApi.getInstance().getPlayer(player.getUniqueId());
+
         switch (identifier) {
             case "device":
                 return getPlayerDeviceString(player);
 
             case "locale":
             case "locale_upper":
-                if (FloodgateAPI.isBedrockPlayer(player.getUniqueId())) {
-                    FloodgatePlayer floodgatePlayer = FloodgateAPI.getPlayer(player.getUniqueId());
+                if (floodgatePlayer != null) {
                     boolean upper = identifier.endsWith("_upper");
                     return plugin.getConfiguration().getLocale().getFound().replace("%locale%", upper ? floodgatePlayer.getLanguageCode().toUpperCase() : floodgatePlayer.getLanguageCode().toLowerCase());
                 } else {
@@ -59,24 +60,21 @@ public class Placeholder extends PlaceholderExpansion {
                 }
 
             case "version":
-                if (FloodgateAPI.isBedrockPlayer(player.getUniqueId())) {
-                    FloodgatePlayer floodgatePlayer = FloodgateAPI.getPlayer(player.getUniqueId());
+                if (floodgatePlayer != null) {
                     return plugin.getConfiguration().getVersion().getFound().replace("%version%", floodgatePlayer.getVersion());
                 } else {
                     return plugin.getConfiguration().getVersion().getNone();
                 }
 
             case "username":
-                if (FloodgateAPI.isBedrockPlayer(player.getUniqueId())) {
-                    FloodgatePlayer floodgatePlayer = FloodgateAPI.getPlayer(player.getUniqueId());
+                if (floodgatePlayer != null) {
                     return plugin.getConfiguration().getXboxUsername().getFound().replace("%username%", floodgatePlayer.getUsername());
                 } else {
                     return plugin.getConfiguration().getXboxUsername().getNone();
                 }
 
             case "xuid":
-                if (FloodgateAPI.isBedrockPlayer(player.getUniqueId())) {
-                    FloodgatePlayer floodgatePlayer = FloodgateAPI.getPlayer(player.getUniqueId());
+                if (floodgatePlayer != null) {
                     return plugin.getConfiguration().getXboxXuid().getFound().replace("%xuid%", floodgatePlayer.getXuid());
                 } else {
                     return plugin.getConfiguration().getXboxXuid().getNone();
@@ -93,36 +91,34 @@ public class Placeholder extends PlaceholderExpansion {
      * @return The formatted device string from config
      */
     private String getPlayerDeviceString(Player player) {
-        if (FloodgateAPI.isBedrockPlayer(player.getUniqueId())) {
+        FloodgatePlayer floodgatePlayer = FloodgateApi.getInstance().getPlayer(player.getUniqueId());
+        if (floodgatePlayer != null) {
             if (plugin.getConfiguration().isSpecificDeviceDescriptors()) {
-                FloodgatePlayer floodgatePlayer = FloodgateAPI.getPlayer(player.getUniqueId());
-                switch (floodgatePlayer.getDeviceOS()) {
-                    case ANDROID:
-                        return plugin.getConfiguration().getDevice().getAndroid().replace("&", "§");
+                switch (floodgatePlayer.getDeviceOs()) {
+                    case GOOGLE:
+                        return plugin.getConfiguration().getDevice().getGoogle().replace("&", "§");
                     case IOS:
                         return plugin.getConfiguration().getDevice().getIOS().replace("&", "§");
                     case OSX:
                         return plugin.getConfiguration().getDevice().getOSX().replace("&", "§");
-                    case FIREOS:
-                        return plugin.getConfiguration().getDevice().getFireos().replace("&", "§");
+                    case AMAZON:
+                        return plugin.getConfiguration().getDevice().getAmazon().replace("&", "§");
                     case GEARVR:
                         return plugin.getConfiguration().getDevice().getGearVR().replace("&", "§");
                     case HOLOLENS:
                         return plugin.getConfiguration().getDevice().getHololens().replace("&", "§");
-                    case WIN10:
-                        return plugin.getConfiguration().getDevice().getWin10().replace("&", "§");
+                    case UWP:
+                        return plugin.getConfiguration().getDevice().getUwp().replace("&", "§");
                     case WIN32:
                         return plugin.getConfiguration().getDevice().getWin32().replace("&", "§");
                     case DEDICATED:
                         return plugin.getConfiguration().getDevice().getDedicated().replace("&", "§");
-                    case ORBIS:
-                        return plugin.getConfiguration().getDevice().getOrbis().replace("&", "§");
+                    case PS4:
+                        return plugin.getConfiguration().getDevice().getPs4().replace("&", "§");
                     case NX:
                         return plugin.getConfiguration().getDevice().getNX().replace("&", "§");
-                    case SWITCH:
-                        return plugin.getConfiguration().getDevice().getNintendoSwitch().replace("&", "§");
-                    case XBOX_ONE:
-                        return plugin.getConfiguration().getDevice().getXboxOne().replace("&", "§");
+                    case XBOX:
+                        return plugin.getConfiguration().getDevice().getXbox().replace("&", "§");
                     default:
                         return plugin.getConfiguration().getDevice().getUnknown().replace("&", "§");
                 }
