@@ -22,10 +22,10 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
 
-        if (Bukkit.getPluginManager().getPlugin("floodgate-bukkit") != null && Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+        if (Bukkit.getPluginManager().getPlugin("floodgate") != null && Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new Placeholder(this).register();
         } else {
-            getLogger().warning("floodgate-bukkit or PlaceholderAPI not found! Disabling plugin.");
+            getLogger().warning("floodgate or PlaceholderAPI not found! Disabling plugin.");
             getServer().getPluginManager().disablePlugin(this);
         }
     }
