@@ -25,7 +25,7 @@ public class Main extends JavaPlugin {
         if (Bukkit.getPluginManager().getPlugin("floodgate") != null && Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new Placeholder(this).register();
         } else {
-            getLogger().warning("floodgate or PlaceholderAPI not found! Disabling plugin.");
+            getLogger().warning("Floodgate 2.0 or PlaceholderAPI not found! Disabling plugin.");
             getServer().getPluginManager().disablePlugin(this);
         }
     }
