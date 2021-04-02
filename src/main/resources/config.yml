@@ -9,7 +9,7 @@ device:
   google: "&8[&aAndroid&8]"
   ios: "&8[&bi&fOS&8]"
   osx: "&8[&fOS&bX&8]"
-  fireos: "&8[&6F&fireOS&8]"
+  amazon: "&8[&6Amazon&8]"
   gearvr: "&8[&7Gear&fVR&8]"
   hololens: "&8[&7Holo&fLens&8]"
   uwp: "&8[&3UWP&8]"
@@ -17,7 +17,7 @@ device:
   dedicated: "&8[&aDED&8]"
   ps4: "&8[&3PS4&8]"
   nx: "&8[&eSwitch&8]"
-  xboxOne: "&8[&2Xbox&8]"
+  xbox: "&8[&2Xbox&8]"
 
 # The locale format (none for java users)
 locale:

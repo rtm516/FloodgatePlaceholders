@@ -1,16 +1,25 @@
 package com.rtm516.FloodgatePlaceholders;
 
+import me.clip.placeholderapi.expansion.Configurable;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.geysermc.floodgate.api.FloodgateApi;
 import org.geysermc.floodgate.api.player.FloodgatePlayer;
 
-public class Placeholder extends PlaceholderExpansion {
+import java.util.HashMap;
+import java.util.Map;
 
-    private Main plugin;
+public class Placeholder extends PlaceholderExpansion implements Configurable {
 
-    public Placeholder(Main plugin){
-        this.plugin = plugin;
+    private Config config;
+
+    public Placeholder() {
+        config = new ExpansionConfig(this);
+    }
+
+    public Placeholder(Config config){
+        this.config = config;
     }
 
     @Override
@@ -20,12 +29,17 @@ public class Placeholder extends PlaceholderExpansion {
 
     @Override
     public boolean canRegister(){
-        return true;
+        return Bukkit.getPluginManager().isPluginEnabled(getRequiredPlugin());
+    }
+
+    @Override
+    public String getRequiredPlugin() {
+        return "floodgate";
     }
 
     @Override
     public String getAuthor(){
-        return plugin.getDescription().getAuthors().toString();
+        return "rtm516";
     }
 
     @Override
@@ -35,7 +49,7 @@ public class Placeholder extends PlaceholderExpansion {
 
     @Override
     public String getVersion(){
-        return plugin.getDescription().getVersion();
+        return Main.VERSION;
     }
 
     @Override
@@ -54,30 +68,30 @@ public class Placeholder extends PlaceholderExpansion {
             case "locale_upper":
                 if (floodgatePlayer != null) {
                     boolean upper = identifier.endsWith("_upper");
-                    return plugin.getConfiguration().getLocale().getFound().replace("%locale%", upper ? floodgatePlayer.getLanguageCode().toUpperCase() : floodgatePlayer.getLanguageCode().toLowerCase());
+                    return config.getLocale().getFound().replace("%locale%", upper ? floodgatePlayer.getLanguageCode().toUpperCase() : floodgatePlayer.getLanguageCode().toLowerCase());
                 } else {
-                    return plugin.getConfiguration().getLocale().getNone();
+                    return config.getLocale().getNone();
                 }
 
             case "version":
                 if (floodgatePlayer != null) {
-                    return plugin.getConfiguration().getVersion().getFound().replace("%version%", floodgatePlayer.getVersion());
+                    return config.getVersion().getFound().replace("%version%", floodgatePlayer.getVersion());
                 } else {
-                    return plugin.getConfiguration().getVersion().getNone();
+                    return config.getVersion().getNone();
                 }
 
             case "username":
                 if (floodgatePlayer != null) {
-                    return plugin.getConfiguration().getXboxUsername().getFound().replace("%username%", floodgatePlayer.getUsername());
+                    return config.getXboxUsername().getFound().replace("%username%", floodgatePlayer.getUsername());
                 } else {
-                    return plugin.getConfiguration().getXboxUsername().getNone();
+                    return config.getXboxUsername().getNone();
                 }
 
             case "xuid":
                 if (floodgatePlayer != null) {
-                    return plugin.getConfiguration().getXboxXuid().getFound().replace("%xuid%", floodgatePlayer.getXuid());
+                    return config.getXboxXuid().getFound().replace("%xuid%", floodgatePlayer.getXuid());
                 } else {
-                    return plugin.getConfiguration().getXboxXuid().getNone();
+                    return config.getXboxXuid().getNone();
                 }
         }
 
@@ -93,41 +107,73 @@ public class Placeholder extends PlaceholderExpansion {
     private String getPlayerDeviceString(Player player) {
         FloodgatePlayer floodgatePlayer = FloodgateApi.getInstance().getPlayer(player.getUniqueId());
         if (floodgatePlayer != null) {
-            if (plugin.getConfiguration().isSpecificDeviceDescriptors()) {
+            if (config.isSpecificDeviceDescriptors()) {
                 switch (floodgatePlayer.getDeviceOs()) {
                     case GOOGLE:
-                        return plugin.getConfiguration().getDevice().getGoogle().replace("&", "§");
+                        return config.getDevice().getGoogle().replace("&", "§");
                     case IOS:
-                        return plugin.getConfiguration().getDevice().getIOS().replace("&", "§");
+                        return config.getDevice().getIOS().replace("&", "§");
                     case OSX:
-                        return plugin.getConfiguration().getDevice().getOSX().replace("&", "§");
+                        return config.getDevice().getOSX().replace("&", "§");
                     case AMAZON:
-                        return plugin.getConfiguration().getDevice().getAmazon().replace("&", "§");
+                        return config.getDevice().getAmazon().replace("&", "§");
                     case GEARVR:
-                        return plugin.getConfiguration().getDevice().getGearVR().replace("&", "§");
+                        return config.getDevice().getGearVR().replace("&", "§");
                     case HOLOLENS:
-                        return plugin.getConfiguration().getDevice().getHololens().replace("&", "§");
+                        return config.getDevice().getHololens().replace("&", "§");
                     case UWP:
-                        return plugin.getConfiguration().getDevice().getUwp().replace("&", "§");
+                        return config.getDevice().getUwp().replace("&", "§");
                     case WIN32:
-                        return plugin.getConfiguration().getDevice().getWin32().replace("&", "§");
+                        return config.getDevice().getWin32().replace("&", "§");
                     case DEDICATED:
-                        return plugin.getConfiguration().getDevice().getDedicated().replace("&", "§");
+                        return config.getDevice().getDedicated().replace("&", "§");
                     case PS4:
-                        return plugin.getConfiguration().getDevice().getPs4().replace("&", "§");
+                        return config.getDevice().getPs4().replace("&", "§");
                     case NX:
-                        return plugin.getConfiguration().getDevice().getNX().replace("&", "§");
+                        return config.getDevice().getNX().replace("&", "§");
                     case XBOX:
-                        return plugin.getConfiguration().getDevice().getXbox().replace("&", "§");
+                        return config.getDevice().getXbox().replace("&", "§");
                     default:
-                        return plugin.getConfiguration().getDevice().getUnknown().replace("&", "§");
+                        return config.getDevice().getUnknown().replace("&", "§");
                 }
             }else{
-                return plugin.getConfiguration().getDevice().getGeneric().replace("&", "§");
+                return config.getDevice().getGeneric().replace("&", "§");
             }
         } else {
-            return plugin.getConfiguration().getDevice().getJava().replace("&", "§");
+            return config.getDevice().getJava().replace("&", "§");
         }
     }
 
+    @Override
+    public Map<String, Object> getDefaults() {
+        if (!(config instanceof ExpansionConfig)) {
+            return null;
+        }
+
+        final Map<String, Object> defaults = new HashMap<>();
+        defaults.put("device.java", "&8[&aJava&8]");
+        defaults.put("device.generic", "&8[&7Bedrock&8]");
+        defaults.put("device.unknown", "&8[&aUnknown&8]");
+        defaults.put("device.google", "&8[&aAndroid&8]");
+        defaults.put("device.ios", "&8[&bi&fOS&8]");
+        defaults.put("device.osx", "&8[&fOS&bX&8]");
+        defaults.put("device.amazon", "&8[&6Amazon&8]");
+        defaults.put("device.gearvr", "&8[&7Gear&fVR&8]");
+        defaults.put("device.hololens", "&8[&7Holo&fLens&8]");
+        defaults.put("device.uwp", "&8[&3UWP&8]");
+        defaults.put("device.win32", "&8[&3Win&f32&8]");
+        defaults.put("device.dedicated", "&8[&aDED&8]");
+        defaults.put("device.ps4", "&8[&3PS4&8]");
+        defaults.put("device.nx", "&8[&eSwitch&8]");
+        defaults.put("device.xbox", "&8[&2Xbox&8]");
+        defaults.put("locale.found", "&8[&6%locale%&8]");
+        defaults.put("locale.none", "&8[&6N/A&8]");
+        defaults.put("version.found", "&8[&6%version%&8]");
+        defaults.put("version.none", "&8[&6N/A&8]");
+        defaults.put("xbox-username.found", "&8[&6%username%&8]");
+        defaults.put("xbox-username.none", "&8[&6N/A&8]");
+        defaults.put("xbox-xuid.found", "&8[&6%xuid%&8]");
+        defaults.put("xbox-xuid.none", "&8[&6N/A&8]");
+        return defaults;
+    }
 }

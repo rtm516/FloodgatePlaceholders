@@ -14,6 +14,13 @@ Java:
 
 ![image](https://user-images.githubusercontent.com/5401186/80527741-c1519f00-898c-11ea-8b0a-999b455b77af.png)
 
+## Download
+You can download the plugin/extension from GitHub releases or eCloud
+
+https://api.extendedclip.com/expansions/floodgate/ or `/papi ecloud download Floodgate` ingame
+
+https://github.com/rtm516/FloodgatePlaceholders/releases/
+
 ## Placeholders:
 - Device:
 	- `%floodgate_device%`

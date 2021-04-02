@@ -1,111 +1,53 @@
 package com.rtm516.FloodgatePlaceholders;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import lombok.Getter;
+public interface Config {
+    boolean isSpecificDeviceDescriptors();
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+    DevicePlaceholders getDevice();
 
-@Getter
-public class Config {
-    @JsonProperty(value = "specific-device-descriptors")
-    private boolean specificDeviceDescriptors;
+    GenericPlaceholders getLocale();
 
-    @JsonProperty(value = "device")
-    private DevicePlaceholders device;
+    GenericPlaceholders getVersion();
 
-    @JsonProperty(value = "locale")
-    private GenericPlaceholders locale;
+    GenericPlaceholders getXboxUsername();
 
-    @JsonProperty(value = "version")
-    private GenericPlaceholders version;
+    GenericPlaceholders getXboxXuid();
 
-    @JsonProperty(value = "xbox-username")
-    private GenericPlaceholders xboxUsername;
+    interface DevicePlaceholders {
+        String getJava();
 
-    @JsonProperty(value = "xbox-xuid")
-    private GenericPlaceholders xboxXuid;
+        String getGeneric();
 
-    @Getter
-    public static class DevicePlaceholders {
-        @JsonProperty("java")
-        private String java;
+        String getUnknown();
 
-        @JsonProperty("generic")
-        private String generic;
+        String getGoogle();
 
-        @JsonProperty("unknown")
-        private String unknown;
+        String getIOS();
 
-        @JsonProperty("google")
-        private String google;
+        String getOSX();
 
-        @JsonProperty("ios")
-        private String iOS;
+        String getAmazon();
 
-        @JsonProperty("osx")
-        private String OSX;
+        String getGearVR();
 
-        @JsonProperty("amazon")
-        private String amazon;
+        String getHololens();
 
-        @JsonProperty("gearvr")
-        private String gearVR;
+        String getUwp();
 
-        @JsonProperty("hololens")
-        private String hololens;
+        String getWin32();
 
-        @JsonProperty("uwp")
-        private String uwp;
+        String getDedicated();
 
-        @JsonProperty("win32")
-        private String win32;
+        String getPs4();
 
-        @JsonProperty("dedicated")
-        private String dedicated;
+        String getNX();
 
-        @JsonProperty("ps4")
-        private String ps4;
-
-        @JsonProperty("nx")
-        private String NX;
-
-        @JsonProperty("xbox")
-        private String xbox;
+        String getXbox();
     }
 
-    @Getter
-    public static class GenericPlaceholders {
-        @JsonProperty("found")
-        private String found;
+    interface GenericPlaceholders {
+        String getFound();
 
-        @JsonProperty("none")
-        private String none;
-    }
-
-    public static Config load(Logger logger, Path configPath) {
-        Config config = null;
-        try {
-            try {
-                if (!configPath.toFile().exists())
-                    Files.copy(Config.class.getClassLoader().getResourceAsStream("config.yml"), configPath);
-            } catch (Exception e) {
-                logger.log(Level.SEVERE, "Error while creating config.yml", e);
-            }
-
-            config = new ObjectMapper(new YAMLFactory()).readValue(Files.readAllBytes(configPath), Config.class);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error while loading config.yml", e);
-        }
-
-        if (config == null) {
-            throw new RuntimeException("Failed to load config file! Try to delete the data folder of FloodgatePlaceholders");
-        }
-
-        return config;
+        String getNone();
     }
 }

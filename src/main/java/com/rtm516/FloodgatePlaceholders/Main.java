@@ -6,8 +6,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 
+    public static final String NAME = "FloodgatePlaceholders";
+    public static final String VERSION = "DEV";
+
     @Getter
-    private Config configuration;
+    private PluginConfig configuration;
 
     @Override
     public void onLoad() {
@@ -15,7 +18,7 @@ public class Main extends JavaPlugin {
             getDataFolder().mkdir();
         }
 
-        configuration = Config.load(getLogger(), getDataFolder().toPath().resolve("config.yml"));
+        configuration = PluginConfig.load(getLogger(), getDataFolder().toPath().resolve("config.yml"));
     }
 
     @Override
@@ -23,7 +26,7 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
 
         if (Bukkit.getPluginManager().getPlugin("floodgate") != null && Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            new Placeholder(this).register();
+            new Placeholder(getConfiguration()).register();
         } else {
             getLogger().warning("Floodgate 2.0 or PlaceholderAPI not found! Disabling plugin.");
             getServer().getPluginManager().disablePlugin(this);
