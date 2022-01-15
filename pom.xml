@@ -6,7 +6,7 @@
 
     <groupId>com.rtm516</groupId>
     <artifactId>FloodgatePlaceholders</artifactId>
-    <version>1.4.1</version>
+    <version>1.4.2</version>
     <name>FloodgatePlaceholders</name>
 
     <developers>
@@ -63,7 +63,7 @@
                         </goals>
                         <configuration>
                             <includes>
-                                <include>${project.basedir}/src/main/java/com/rtm516/FloodgatePlaceholders/Placeholder.java</include>
+                                <include>${project.basedir}/src/main/java/com/rtm516/FloodgatePlaceholders/FloodgateExpansion.java</include>
                             </includes>
                             <replacements>
                                 <replacement>
@@ -86,7 +86,7 @@
                         </goals>
                         <configuration>
                             <includes>
-                                <include>${project.basedir}/src/main/java/com/rtm516/FloodgatePlaceholders/Placeholder.java</include>
+                                <include>${project.basedir}/src/main/java/com/rtm516/FloodgatePlaceholders/FloodgateExpansion.java</include>
                             </includes>
                             <replacements>
                                 <replacement>
