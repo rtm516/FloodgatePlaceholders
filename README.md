@@ -1,5 +1,5 @@
 # FloodgatePlaceholders
-[![forthebadge made-with-java](https://ForTheBadge.com/images/badges/made-with-java.svg)](https://java.com/)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://java.com)
 
 [![HitCount](https://hits.dwyl.com/rtm516/FloodgatePlaceholders.svg)](http://hits.dwyl.com/rtm516/FloodgatePlaceholders)
 
@@ -18,8 +18,6 @@ Java:
 You can download the plugin/extension from GitHub releases or eCloud
 
 https://api.extendedclip.com/expansions/floodgate/ or `/papi ecloud download Floodgate` ingame
-
-https://github.com/rtm516/FloodgatePlaceholders/releases/
 
 ## Placeholders:
 - Device:

@@ -1,6 +1,0 @@
-name: ${project.name}
-main: com.rtm516.FloodgatePlaceholders.Main
-version: ${project.version}
-author: rtm516
-api-version: 1.15
-depend: [floodgate, PlaceholderAPI]

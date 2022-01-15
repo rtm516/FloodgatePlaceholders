@@ -10,16 +10,14 @@ import org.geysermc.floodgate.api.player.FloodgatePlayer;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Placeholder extends PlaceholderExpansion implements Configurable {
+public class FloodgateExpansion extends PlaceholderExpansion implements Configurable {
 
-    private Config config;
+    public static final String VERSION = "DEV";
 
-    public Placeholder() {
-        config = new ExpansionConfig(this);
-    }
+    private FloodgateExpansionConfig config;
 
-    public Placeholder(Config config){
-        this.config = config;
+    public FloodgateExpansion() {
+        config = new FloodgateExpansionConfig(this);
     }
 
     @Override
@@ -49,7 +47,7 @@ public class Placeholder extends PlaceholderExpansion implements Configurable {
 
     @Override
     public String getVersion(){
-        return Main.VERSION;
+        return VERSION;
     }
 
     @Override
@@ -146,10 +144,6 @@ public class Placeholder extends PlaceholderExpansion implements Configurable {
 
     @Override
     public Map<String, Object> getDefaults() {
-        if (!(config instanceof ExpansionConfig)) {
-            return null;
-        }
-
         final Map<String, Object> defaults = new HashMap<>();
         defaults.put("device.java", "&8[&aJava&8]");
         defaults.put("device.generic", "&8[&7Bedrock&8]");
