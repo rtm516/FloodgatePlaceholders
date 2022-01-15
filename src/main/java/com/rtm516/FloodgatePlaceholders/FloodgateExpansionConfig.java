@@ -1,5 +1,8 @@
 package com.rtm516.FloodgatePlaceholders;
 
+import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.entity.Player;
+
 public class FloodgateExpansionConfig {
     private final FloodgateExpansion expansion;
 
@@ -116,8 +119,8 @@ public class FloodgateExpansionConfig {
             return config.expansion.getString(parent + ".found", "");
         }
 
-        public String getNone() {
-            return config.expansion.getString(parent + ".none", "");
+        public String getNone(Player player) {
+            return PlaceholderAPI.setPlaceholders(player, config.expansion.getString(parent + ".none", ""));
         }
     }
 }

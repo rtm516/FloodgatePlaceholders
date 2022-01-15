@@ -68,28 +68,28 @@ public class FloodgateExpansion extends PlaceholderExpansion implements Configur
                     boolean upper = identifier.endsWith("_upper");
                     return config.getLocale().getFound().replace("%locale%", upper ? floodgatePlayer.getLanguageCode().toUpperCase() : floodgatePlayer.getLanguageCode().toLowerCase());
                 } else {
-                    return config.getLocale().getNone();
+                    return config.getLocale().getNone(player);
                 }
 
             case "version":
                 if (floodgatePlayer != null) {
                     return config.getVersion().getFound().replace("%version%", floodgatePlayer.getVersion());
                 } else {
-                    return config.getVersion().getNone();
+                    return config.getVersion().getNone(player);
                 }
 
             case "username":
                 if (floodgatePlayer != null) {
                     return config.getXboxUsername().getFound().replace("%username%", floodgatePlayer.getUsername());
                 } else {
-                    return config.getXboxUsername().getNone();
+                    return config.getXboxUsername().getNone(player);
                 }
 
             case "xuid":
                 if (floodgatePlayer != null) {
                     return config.getXboxXuid().getFound().replace("%xuid%", floodgatePlayer.getXuid());
                 } else {
-                    return config.getXboxXuid().getNone();
+                    return config.getXboxXuid().getNone(player);
                 }
         }
 
