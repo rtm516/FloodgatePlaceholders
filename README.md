@@ -1,7 +1,7 @@
 # FloodgatePlaceholders
-[![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://java.com)
-
+[![License: GPL-3.0](https://img.shields.io/github/license/rtm516/MCXboxBroadcast)](LICENSE)
 [![HitCount](https://hits.dwyl.com/rtm516/FloodgatePlaceholders.svg)](http://hits.dwyl.com/rtm516/FloodgatePlaceholders)
+[![Discord](https://img.shields.io/discord/1139621390908133396?label=discord&color=5865F2)](https://discord.gg/Tp3tA2kdCN)
 
 PlaceholderAPI support for [Floodgate](https://github.com/GeyserMC/Floodgate)
 
