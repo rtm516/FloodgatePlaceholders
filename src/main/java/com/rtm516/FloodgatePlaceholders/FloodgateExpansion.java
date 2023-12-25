@@ -52,7 +52,7 @@ public class FloodgateExpansion extends PlaceholderExpansion implements Configur
 
     @Override
     public String onPlaceholderRequest(Player player, String identifier) {
-        if(player == null) {
+        if (player == null) {
             return "";
         }
 
@@ -90,6 +90,15 @@ public class FloodgateExpansion extends PlaceholderExpansion implements Configur
                     return config.getXboxXuid().getFound().replace("%xuid%", floodgatePlayer.getXuid());
                 } else {
                     return config.getXboxXuid().getNone(player);
+                }
+
+            case "isbedrock":
+                //boolean isFloodgatePlayer = FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId());
+                //if (isFloodgatePlayer == true) {
+                if (floodgatePlayer != null) {
+                    return config.getIsBedrock().getFound();
+                } else {
+                    return config.getIsBedrock().getNone(player);
                 }
         }
 
@@ -134,7 +143,7 @@ public class FloodgateExpansion extends PlaceholderExpansion implements Configur
                     default:
                         return config.getDevice().getUnknown().replace("&", "§");
                 }
-            }else{
+            } else {
                 return config.getDevice().getGeneric().replace("&", "§");
             }
         } else {
@@ -168,6 +177,8 @@ public class FloodgateExpansion extends PlaceholderExpansion implements Configur
         defaults.put("xbox-username.none", "&8[&6N/A&8]");
         defaults.put("xbox-xuid.found", "&8[&6%xuid%&8]");
         defaults.put("xbox-xuid.none", "&8[&6N/A&8]");
+        defaults.put("is-bedrock.found", "true");
+        defaults.put("is-bedrock.none", "false");
         return defaults;
     }
 }
