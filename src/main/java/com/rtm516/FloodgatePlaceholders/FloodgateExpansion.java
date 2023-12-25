@@ -93,8 +93,6 @@ public class FloodgateExpansion extends PlaceholderExpansion implements Configur
                 }
 
             case "isbedrock":
-                //boolean isFloodgatePlayer = FloodgateApi.getInstance().isFloodgatePlayer(player.getUniqueId());
-                //if (isFloodgatePlayer == true) {
                 if (floodgatePlayer != null) {
                     return config.getIsBedrock().getFound();
                 } else {
