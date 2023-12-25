@@ -34,6 +34,10 @@ public class FloodgateExpansionConfig {
         return new GenericPlaceholders(this, "xbox-xuid");
     }
 
+    public GenericPlaceholders getIsBedrock() {
+        return new GenericPlaceholders(this, "is-bedrock");
+    }
+
     public static class DevicePlaceholders {
 
         private final FloodgateExpansionConfig config;
