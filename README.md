@@ -20,6 +20,8 @@ You can download the extension from GitHub releases or eCloud
 https://api.extendedclip.com/expansions/floodgate/ or `/papi ecloud download Floodgate` ingame
 
 ## Placeholders:
+- Platform:
+  	- `%floodgate_isbedrock%`
 - Device:
 	- `%floodgate_device%`
 - Locale:
