@@ -21,12 +21,7 @@ public class FloodgateExpansion extends PlaceholderExpansion implements Configur
     }
 
     @Override
-    public boolean persist(){
-        return true;
-    }
-
-    @Override
-    public boolean canRegister(){
+    public boolean canRegister() {
         return Bukkit.getPluginManager().isPluginEnabled(getRequiredPlugin());
     }
 
@@ -36,17 +31,17 @@ public class FloodgateExpansion extends PlaceholderExpansion implements Configur
     }
 
     @Override
-    public String getAuthor(){
+    public String getAuthor() {
         return "rtm516";
     }
 
     @Override
-    public String getIdentifier(){
+    public String getIdentifier() {
         return "floodgate";
     }
 
     @Override
-    public String getVersion(){
+    public String getVersion() {
         return VERSION;
     }
 
